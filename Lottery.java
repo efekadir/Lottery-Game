@@ -2,38 +2,34 @@ import java.util.Scanner;
 
 public class Lottery {
 	public static void main(String[] args) {
-	    int lottery = (int)(Math.random() * 100);
-	    Scanner sc = new Scanner(System.in);
-	    System.out.print("Enter your lottery pick (two digits): ");
-	    int guess = sc.nextInt();
-	
-	    int lotteryDigit1 = lottery / 10;
-	    int lotteryDigit2 = lottery % 10;
-	
-	    int guessDigit1 = guess / 10;
-	    int guessDigit2 = guess % 10;
-	
-	    if(lottery < 10) {
-	        System.out.println("The lottery number is 0" + lottery);
-	    }
-	    else {
-	        System.out.println("The lottery number is " + lottery);
-	    }
-	
-	    if (guess == lottery) {
-	    	System.out.println("Exact match: you win $10,000");
-	    }
-	    else if (guessDigit2 == lotteryDigit1 && guessDigit1 == lotteryDigit2) {
-	    	System.out.println("Match all digits: you win $3,000");
-	    }
-	    else if (guessDigit1 == lotteryDigit1 
-	    		|| guessDigit1 == lotteryDigit2 
-	          	|| guessDigit2 == lotteryDigit1 
-	          	|| guessDigit2 == lotteryDigit2) {
-	    	System.out.println("Match one digit: you win $1,000");
-	    }
-	    else {
-	    	System.out.println("Sorry, no match"); 
-	    }
+		Scanner sc = new Scanner(System.in);
+		String lottery = "" + (int)(Math.random() * 10) + (int)(Math.random() * 10);
+		
+		System.out.print("Enter a two-digit number: ");
+		String number = sc.nextLine();
+		
+		char l1 = lottery.charAt(0);
+		char l2 = lottery.charAt(1);
+		
+		if (number.length() == 2) {
+			char n1 = number.charAt(0);
+		    char n2 = number.charAt(1);
+			if (l1 == n1 && l2 == n2) {
+				System.out.println("You won 10000 dollars!");
+			}
+			else if (l1 == n2 && l2 == n1) {
+				System.out.println("You won 3000 dollars!");
+			}
+			else if (l1 == n1 || l1 == n2 || l2 == n1 || l2 == n2) {
+				System.out.println("You won 1000 dollars!");
+			}
+			else {
+				System.out.println("Bad luck. See you next time!");
+			}
+				System.out.println("Lottery number is " + lottery);
+		}
+		else {
+			System.out.println("Please enter a two digit number.");
+		}
 	}
 }
